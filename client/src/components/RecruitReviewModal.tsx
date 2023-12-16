@@ -191,6 +191,7 @@ const RecruitReviewModal = ({
                   if (i + 1 <= star)
                     return (
                       <button
+                        aria-label="star"
                         key={i + 1}
                         type="button"
                         value={i + 1}
@@ -202,6 +203,7 @@ const RecruitReviewModal = ({
                   return (
                     <button
                       key={i + 1}
+                      aria-label="star"
                       type="button"
                       value={i + 1}
                       onClick={() => setStar(i + 1)}

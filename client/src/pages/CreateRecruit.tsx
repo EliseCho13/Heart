@@ -400,7 +400,7 @@ const CreateRecruit = () => {
               <td>
                 <label htmlFor="heartLimit">심박수 조건</label>
               </td>
-              <td>
+              <td aria-label="table">
                 <Controller
                   control={control}
                   name="heartLimit"

@@ -191,7 +191,11 @@ const EditFreeAuto = ({
         {fields.map((item, index) => (
           <li key={item.id}>
             {`${item.emoji || ''} ${item.tagName}`}
-            <button type="button" onClick={() => remove(index)}>
+            <button
+              type="button"
+              aria-label="remove"
+              onClick={() => remove(index)}
+            >
               <i className="fa-solid fa-xmark" />
             </button>
           </li>

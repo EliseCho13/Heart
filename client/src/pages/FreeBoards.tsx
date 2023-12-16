@@ -255,7 +255,12 @@ const FreeBoards = () => {
           />
         )}
       </div>
-      <button className="scrollBtn" type="button" onClick={handleClick}>
+      <button
+        className="scrollBtn"
+        aria-label="page"
+        type="button"
+        onClick={handleClick}
+      >
         <i className="fa-solid fa-arrow-up-long" />
       </button>
     </FBLContainer>

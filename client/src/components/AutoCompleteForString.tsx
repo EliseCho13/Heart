@@ -110,7 +110,11 @@ const AutoCompleteForString = ({
       {SELECTED_TAG.map((t) => (
         <Tag key={t.tagId}>
           {t.emoji ? `${t.emoji} ${t.tagName}` : `${t.tagName}`}
-          <button type="button" onClick={() => setFilterTag('')}>
+          <button
+            type="button"
+            aria-label="remove"
+            onClick={() => setFilterTag('')}
+          >
             <i className="fa-solid fa-xmark" />
           </button>
         </Tag>

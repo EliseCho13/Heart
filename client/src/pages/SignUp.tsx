@@ -459,7 +459,7 @@ const SignUp = () => {
               <td>
                 <p>관심 태그</p>
               </td>
-              <td>
+              <td aria-label="table">
                 <AutoCompleteForArray
                   fields={fields}
                   append={append}
