@@ -161,20 +161,11 @@ const SignUp = () => {
         lon,
         locations: locationString,
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/login');
       })
       .catch((err) => {
         console.log(err);
-        console.log(
-          JSON.stringify({
-            ...data,
-            lat,
-            lon,
-            locations: locationString,
-          }),
-        );
       });
   };
 
@@ -213,8 +204,6 @@ const SignUp = () => {
     { tagId: 20, tagName: '헬스/크로스핏', emoji: '🏋️' },
     { tagId: 21, tagName: '스케이트/인라인', emoji: '⛸️' },
   ];
-
-  console.log('render');
 
   return (
     <SignUpContainer>
@@ -256,7 +245,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-nickname/${nickname}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data === true) {
                           alert('사용 불가능한 닉네임입니다.');
                           setCheckedNickname(true);
@@ -320,7 +308,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-email/${email}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data !== true) {
                           alert('사용 가능한 이메일입니다.');
                           setCheckedEmail(false);
@@ -362,7 +349,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-phone/${phone}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data !== true) {
                           alert('사용 가능한 번호입니다.');
                           setCheckedPhone(true);

@@ -2,7 +2,6 @@ import MyRecruitItem from './MyRecruitItem';
 import RecruitDataProps from '../interfaces/RecruitDataProps';
 
 const WroteRecruit = ({ data }: any) => {
-  console.log('data is ', data);
   return (
     <div>
       {

@@ -2,7 +2,6 @@ import MyRecruitItem from './MyRecruitItem';
 import RecruitLikeProps from '../interfaces/RecruitLikeProps';
 
 const LikeRecruit = ({ data }: any) => {
-  console.log('data is ', data);
   return (
     <div>
       {

@@ -103,7 +103,6 @@ const Recruits = () => {
         )
         .then((res) => {
           setData(res.data.data);
-          console.log(res.data.data);
           setPageCount(res.data.pageInfo.totalPages);
           setLoading(false);
         })

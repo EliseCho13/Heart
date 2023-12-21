@@ -232,7 +232,6 @@ const FreeDetail = () => {
       .get(`${process.env.REACT_APP_API_URL}/freeboards/${freeId}`)
       .then((res) => {
         setPost(res.data.data);
-        console.log(post);
         setIsLoading(false);
         setLikesMemberId(
           res.data.data.freeLikes.reduce((r: number[], e: any) => {
@@ -361,7 +360,6 @@ const FreeDetail = () => {
                     },
                   )
                   .then((res) => {
-                    console.log(res);
                     setPost(res.data.data);
                     setLikesMemberId(
                       res.data.data.freeLikes.reduce((r: number[], e: any) => {

@@ -118,7 +118,6 @@ const LogIn = () => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/members/login`, data)
       .then((res) => {
-        console.log(res);
         dispatch(setAccessToken(res.headers.authorization!));
         dispatch(setRefreshToken(res.headers.refresh!));
         dispatch(setMemberId(res.headers['member-id']!));

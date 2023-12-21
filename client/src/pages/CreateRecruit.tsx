@@ -136,7 +136,6 @@ const KakaoMapForClick = ({
     name: 'lon',
     defaultValue: currentLon,
   });
-  console.log(lat, lon);
   return <KakaoMapClick latitude={lat} longitude={lon} setValue={setValue} />;
 };
 
@@ -182,13 +181,11 @@ const CreateRecruit = () => {
         },
       )
       .then((res) => {
-        console.log(res);
         navigate(`/recruits`);
       })
       .catch((err) => console.log(err));
   };
   const { location } = useCurrentLocation();
-  console.log(location);
   const TAG_DATA = [
     { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
     { tagId: 2, tagName: '농구', emoji: '🏀' },

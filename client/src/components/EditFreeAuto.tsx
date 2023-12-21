@@ -175,7 +175,6 @@ const EditFreeAuto = ({
   let i = 10;
   function addNewTag(e: any) {
     if (e.key === ' ' || e.code === 'Space' || e.keyCode === 32) {
-      console.log(e.target.value);
       append({
         tagId: i,
         tagName: e.target.value,

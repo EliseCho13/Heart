@@ -400,7 +400,6 @@ const EditUser = () => {
           },
         })
         .then((res: any) => {
-          console.log(res);
           setOneUsers(res.data);
           setLocationString(res.data.location);
           // setIsLoading(false);
@@ -441,9 +440,7 @@ const EditUser = () => {
         email: oneUser.email,
         password: data.curPassword,
       })
-      .then((r) => {
-        console.log(r);
-
+      .then(() => {
         axios
           .patch(
             `${process.env.REACT_APP_API_URL}/members/my-page`,
@@ -462,18 +459,11 @@ const EditUser = () => {
               },
             },
           )
-          .then((res) => {
-            console.log(res);
-            // alert(res);
+          .then(() => {
             navigate(`/members/mypage`);
           })
           .catch((err) => {
             console.log(err);
-            console.log(
-              JSON.stringify({
-                data,
-              }),
-            );
           });
       })
       .catch(() => {
@@ -600,7 +590,6 @@ const EditUser = () => {
         `${process.env.REACT_APP_API_URL}/members/signup/check-nickname/${name}`,
       )
       .then((res: any) => {
-        console.log(res);
         if (res.data === true) {
           alert('이미 존재하는 닉네임입니다!');
         } else {
@@ -618,7 +607,6 @@ const EditUser = () => {
           `${process.env.REACT_APP_API_URL}/members/signup/check-phone/${phone}`,
         )
         .then((res: any) => {
-          console.log(res);
           if (res.data === true) {
             alert('이미 존재하는 휴대폰 번호입니다!');
           } else {

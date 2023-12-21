@@ -130,7 +130,6 @@ const CommentBox = (props: {
   const [modifying, setModifying] = useState<boolean>(false);
 
   const handleCommentDelete = () => {
-    console.log(`DELETE /${board}/${boardId}/${commentId}`);
     axios
       .delete(
         `${process.env.REACT_APP_API_URL}/${board}/${boardId}/${commentId}`,
@@ -143,12 +142,9 @@ const CommentBox = (props: {
         },
       )
       .then((res) => {
-        console.log(res);
         setData(res.data.data);
       });
   };
-
-  console.log(creatorId, memberId);
 
   return (
     <CommentContainer>

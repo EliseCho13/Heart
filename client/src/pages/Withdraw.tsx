@@ -116,9 +116,6 @@ const Withdraw = () => {
           Refresh: refreshToken,
         },
       })
-      .then((res: any) => {
-        console.log(res);
-      })
       .catch((err: any) => console.log(err));
     navigate('/');
     // console.log(memberId, ' withdrew');

@@ -81,7 +81,6 @@ const SearchPassword = () => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/members/find-account`, data)
       .then((res) => {
-        console.log(res);
         alert('비밀번호가 발송되었습니다.');
       })
       .catch((err) => {

@@ -155,7 +155,6 @@ const Header = () => {
           },
         })
         .then((res) => {
-          console.log(res);
           dispatch(setAccessToken(res.headers.authorization!));
           dispatch(setRefreshToken(res.headers.refresh!));
           dispatch(setMemberId(res.headers['member-id']!));
@@ -200,7 +199,6 @@ const Header = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         dispatch(deleteAccessToken());
         dispatch(deleteRefreshToken());
         dispatch(deleteMemberId());

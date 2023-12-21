@@ -143,12 +143,6 @@ const RecruitReviewModal = ({
   const handleReviewSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (reviewBody.current.trim()) {
-      console.log(`POST /recruits/${recruitId}/reviews, {
-            "body": ${reviewBody.current},
-            "memberId": ${memberId},
-            "star": ${star},
-            "worstMemberNickname": ${filterTag || ''}
-          }`);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}/recruits/${recruitId}/reviews`,
@@ -166,7 +160,6 @@ const RecruitReviewModal = ({
           },
         )
         .then((res) => {
-          console.log(res.data.data);
           setData(res.data.data);
           setReviewModal(false);
         })

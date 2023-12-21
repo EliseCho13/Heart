@@ -108,7 +108,6 @@ const FreeBoards = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
   const location = useLocation();
-  console.log(location);
   const searchParams = new URLSearchParams(useLocation().search);
   const [typeState, setTypeState] = useState<string>(
     searchParams.get('type')?.replaceAll('"', '') ?? '',
@@ -124,7 +123,6 @@ const FreeBoards = () => {
   };
 
   useEffect(() => {
-    console.log(typeState, keywordState);
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/freeboards?type=${typeState}&keyword=${keywordState}`,
@@ -139,7 +137,6 @@ const FreeBoards = () => {
         setData(res.data.data);
         setPageCount(res.data.pageInfo.totalPages);
         setLoading(false);
-        console.log(data);
       })
       .catch((err) => console.log(err));
 

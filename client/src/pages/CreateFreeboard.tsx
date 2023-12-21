@@ -234,7 +234,6 @@ const CreateFreeboard = () => {
         .get(`${process.env.REACT_APP_API_URL}/tags/freeboards?page=1&size=100`)
         .then((res: any) => {
           setAddedTags(res.data.data);
-          console.log(addedTags);
         })
         .catch((err: any) => console.log(err));
     };
@@ -246,14 +245,6 @@ const CreateFreeboard = () => {
       tagName,
       emoji,
     }));
-    console.log({
-      freeTitle: data.title,
-      freeBody: data.content,
-      category: data.category,
-      location: data.location,
-      freeTagDtos: sendingTag,
-      memberId: 1,
-    });
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/freeboards`,
@@ -279,11 +270,9 @@ const CreateFreeboard = () => {
         },
       )
       .then((res) => {
-        console.log(res);
         navigate('/freeboards');
       })
       .catch((err) => {
-        console.log(err);
         navigate('/login');
       });
     return false;

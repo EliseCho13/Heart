@@ -50,10 +50,7 @@ const CommentSubmitBox = ({
     e.preventDefault();
     if (comment.trim() !== '' && setModifying) {
       // 댓글을 수정하는 경우
-      console.log(
-        `PATCH ${process.env.REACT_APP_API_URL}${submitComment}`,
-        comment,
-      );
+
       axios
         .patch(
           `${process.env.REACT_APP_API_URL}${submitComment}`,
@@ -69,14 +66,12 @@ const CommentSubmitBox = ({
           },
         )
         .then((res) => {
-          console.log(res);
           setData(res.data.data);
         })
         .catch((err) => console.log(err));
       setModifying(false);
     } else if (comment.trim() !== '') {
       // 댓글을 등록하는 경우
-      console.log(`POST ${submitComment}`, comment);
       if (memberId && Number(memberId) !== -1) {
         axios
           .post(
@@ -93,7 +88,6 @@ const CommentSubmitBox = ({
             },
           )
           .then((res) => {
-            console.log(res);
             setData(res.data.data);
           })
           .catch((err) => console.log(err));

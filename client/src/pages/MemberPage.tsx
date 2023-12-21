@@ -239,7 +239,6 @@ const MemberPage = () => {
       axios
         .get(`${process.env.REACT_APP_API_URL}/members/${memberId}`)
         .then((res: any) => {
-          console.log(res);
           setOneUsers(res.data);
           setIsLoading(false);
         })

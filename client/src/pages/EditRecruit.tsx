@@ -158,7 +158,6 @@ const EditRecruit = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recruits/${recruitId}`)
       .then((res) => {
-        console.log(res);
         setRecruitData(res.data.data);
       })
       .catch((err) => {
@@ -199,7 +198,6 @@ const EditRecruit = () => {
   // });
 
   const onSubmit = (data: RecruitFormInput) => {
-    // console.log(data);
     axios
       .patch(`${process.env.REACT_APP_API_URL}/recruits/${recruitId}`, {
         ...data,
@@ -209,8 +207,7 @@ const EditRecruit = () => {
           Refresh: `${refreshToken}`,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/recruits');
       })
       .catch((err) => {
@@ -248,7 +245,6 @@ const EditRecruit = () => {
   //   if (res === undefined) return;
   //   setLatLon(res);
   // });
-  console.log('render');
 
   return (
     <RecruitFormContainer>

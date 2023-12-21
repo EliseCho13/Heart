@@ -216,11 +216,7 @@ const EditFreeboard = () => {
 
   const onSubmit = (data: FormInputFree) => {
     // data.content = content;
-    console.log('here is ', {
-      ...data,
-      memberId,
-      // freeId: posting.freeId,
-    });
+
     axios
       .patch(`${process.env.REACT_APP_API_URL}/freeboards/${freeId}`, {
         ...data,
@@ -235,12 +231,10 @@ const EditFreeboard = () => {
           Refresh: refreshToken,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/freeboards');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         navigate('/login');
       });
   };

@@ -296,7 +296,6 @@ const MyPage = () => {
           },
         })
         .then((res: any) => {
-          console.log(res.data);
           setOneUsers(res.data);
           setIsLoading(false);
         })
