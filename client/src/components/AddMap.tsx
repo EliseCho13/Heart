@@ -87,7 +87,7 @@ const AddMap = ({
 
       for (let i = 0; i < result.length; i += 1) {
         // 행정동의 region_type 값은 'H' 이므로
-        if (result[i].region_type === 'H') {
+        if (result[i].region_type === 'H' && infoDiv) {
           infoDiv!.innerHTML = result[i].address_name;
           break;
         }
