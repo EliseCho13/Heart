@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import Badge from '../components/Badge';
 import Loading from './Loading';
 import MiniTag from '../components/MiniTag';
 import WroteRecruit from '../components/WroteRecruit';
@@ -39,7 +38,6 @@ const Pfp = styled.img`
   margin: 10px;
   border: 2px solid white;
   border-radius: 100px;
-  /* background-color: pink; */
   width: 130px;
   height: 130px;
 `;
@@ -146,26 +144,6 @@ const MyBoard = styled.div`
   }
 `;
 
-// const Badges = styled.div`
-//   border: 2px solid white;
-//   margin: 10px;
-//   padding: 10px;
-//   width: 25rem;
-//   border-radius: 10px;
-//   display: flex;
-//   flex-direction: row;
-// `;
-// const Tags = styled.div`
-//   border: 2px solid white;
-//   padding: 1rem 2rem;
-//   margin: 10px;
-//   width: 100%;
-//   border-radius: 10px;
-//   > span {
-//     margin: 5px;
-//     padding: 3px 0;
-//   }
-// `;
 const PersonalInfo = styled.div`
   border: 2px solid white;
   padding: 10px;
@@ -283,12 +261,6 @@ const MemberPage = () => {
                       <div>등록 지역</div>
                       <div>
                         <div>{oneUser.location}</div>
-                        {/* {oneUser.locations[1] && (
-                          <div>{oneUser.locations[1]}</div>
-                        )}
-                        {oneUser.locations[2] && (
-                          <div>{oneUser.locations[2]}</div>
-                        )} */}
                       </div>
                     </InfoBlock>
                     <InfoBlock>
@@ -331,35 +303,6 @@ const MemberPage = () => {
                     ) : (
                       <WroteFree data={oneUser.frees} />
                     )}
-                    {/* {
-                      oneUser.recruits.length === 0 ? (
-                        <div>글이 아직 없습니다</div>
-                      ) : (
-                        oneUser.recruits.map((e: RecruitDataProps) => (
-                          <MyRecruitItem
-                            key={e.recruitId}
-                            title={e.title}
-                            quota={`${e.applies.length}/${e.require}`}
-                            tags={e.recruitTags}
-                            dueDate={e.date}
-                            id={e.recruitId}
-                          />
-                        ))
-                      )
-                      // free가 생기면 여기도 위 recruits랑 똑같이 삼항 넣어주자
-                    } */}
-                    {/* // <MyRecruitItem
-                    //   title="title"
-                    //   quota="quota"
-                    //   dueDate="dueDate"
-                    //   tags={['tags']}
-                    // />
-                    // <MyRecruitItem
-                    //   title="같이 농구할 사람 구해요~"
-                    //   quota="2/5"
-                    //   dueDate="2023.01.30"
-                    //   tags={['#농구']}
-                    // /> */}
                   </MyBoard>
                 </Container>
               </div>

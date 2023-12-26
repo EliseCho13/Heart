@@ -76,6 +76,3 @@ const Footer = () => (
 );
 
 export default Footer;
-
-// const BREAK_POINT_TABLET = 768;
-// const BREAK_POINT_PC = 1200;

@@ -128,7 +128,6 @@ const RecruitReviewModal = ({
   const [filterTag, setFilterTag] = useState<string>('');
   const [star, setStar] = useState<number>(5);
   const reviewBody = useRef('');
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));

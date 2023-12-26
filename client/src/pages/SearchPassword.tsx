@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import Button from '../components/Button';
-// import ButtonLink from '../components/ButtonLink';
 
 const SPContainer = styled.main`
   color: white;
@@ -80,7 +79,7 @@ const SearchPassword = () => {
   const onSubmit = (data: { email: string }) => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/members/find-account`, data)
-      .then((res) => {
+      .then(() => {
         alert('비밀번호가 발송되었습니다.');
       })
       .catch((err) => {
@@ -117,7 +116,6 @@ const SearchPassword = () => {
             type="submit"
             onClick={handleSubmit(onSubmit)}
           />
-          {/* <ButtonLink value="로그인" to="/login" /> */}
         </div>
       </SPFormContainer>
     </SPContainer>

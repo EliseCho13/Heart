@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import CreatorMiniCard from './CreatorMiniCard';
 import TagLink from './TagLink';
-// import FreeDataProps from '../interfaces/FreeDataProps';
 import timeDifference from '../utils/timeDifference';
 
 interface FreeBoardListProps {
@@ -15,7 +14,6 @@ interface FreeBoardListProps {
     category: string;
     freeBody: string;
     freeTitle: string;
-    // createdAt;
     modifiedAt: string;
     freeLikes: [];
     views: number;
@@ -32,8 +30,6 @@ interface FreeBoardListProps {
       heart: number;
       body: string;
     }[];
-    // tagId,
-    // tagName,
     nickname: string;
     authorHeart: number;
     authorLocation: string;
@@ -44,7 +40,6 @@ interface FreeBoardListProps {
 
 const Board = styled.li`
   width: 35rem;
-  /* height: auto; */
   padding: 1rem;
   margin: 1rem;
   border: 0.05rem solid white;
@@ -83,24 +78,14 @@ const ContentSec = styled.section`
   > div:first-child {
     display: flex;
     > a {
-      /* width: 4.5rem; */
-      /* width: 6rem; */
-      /* height: 2rem; */
-      /* padding: 1rem; */
-      /* border: 0.05rem solid white; */
       border-radius: 1rem;
       display: flex;
       text-align: center;
       justify-content: center;
       align-items: center;
-      /* background-color: var(--neon-blue); */
-      /* i {
-        color: var(--neon-blue);
-      } */
       div {
         width: 5.5rem;
         height: 2rem;
-        /* padding: 1rem; */
       }
     }
     > div:nth-child(2) {
@@ -121,24 +106,18 @@ const ContentSec = styled.section`
     line-height: 150%;
     padding: 0.2rem;
     margin: 0.5rem 0;
-    /* border: 0.05rem solid white; */
   }
 
   div:nth-child(3) {
     display: flex;
     width: 21rem;
     margin-bottom: 0.2rem;
-    /* border: 0.05rem solid white; */
   }
 
   > div:last-child {
-    /* width: 11em; */
     width: auto;
     height: 1.5rem;
-    /* padding: 0.2rem; */
-    /* border: 0.05rem solid white; */
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     .location {
       margin-right: 0.5rem;
@@ -186,24 +165,6 @@ const FreeBoardList = ({
   setKeywordState,
   data,
 }: FreeBoardListProps) => (
-  // const {
-  //   data: {
-  //     freeId,
-  //     category,
-  //     freeBody,
-  //     freeTitle,
-  //     // createdAt,
-  //     modifiedAt,
-  //     freeLikes,
-  //     views,
-  //     memberId,
-  //     freeTags,
-  //     freeComments,
-  //     nickname,
-  //     authorHeart,
-  //   },
-  // } = props;
-
   <Link to={`/freeboard/${data.freeId}`}>
     <Board>
       <ContentSec>
@@ -245,7 +206,6 @@ const FreeBoardList = ({
           ))}
         </div>
         <div>
-          {/* {`${convertToDate(createdAt)}`} */}
           {data.location ? (
             <div className="location">
               <i className="fa-solid fa-location-dot" />

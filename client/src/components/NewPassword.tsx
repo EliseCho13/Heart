@@ -77,7 +77,6 @@ const NewPassword = ({
 }: any) => {
   const [condition, setCondition] = useState(false);
   const handleChange = (event: any) => {
-    // 👇 Get input value from "event"
     const testing = /^(?=.*\d)(?=.*[a-zA-ZS]).{8,16}/;
     if (testing.test(event.target.value)) {
       setNewPass(event.target.value);

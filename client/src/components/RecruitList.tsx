@@ -158,12 +158,6 @@ const ListCondition = styled.div`
           overflow: hidden;
         }
       }
-      /* transition: 0.2s ease-in-out;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-        transition: 0.2s ease-in-out;
-      } */
     }
   }
 
@@ -207,43 +201,9 @@ const ListCondition = styled.div`
           font-weight: 400;
         }
       }
-      /* transition: 0.2s ease-in-out;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-        transition: 0.2s ease-in-out;
-      } */
     }
   }
 `;
-
-// const ProfileImgContainer = styled.div`
-//   width: 100%;
-//   position: absolute;
-//   top: -50%;
-//   left: 0;
-//   white-space: nowrap;
-//   display: flex;
-//   justify-content: center;
-// `;
-
-// interface ProfileImgProps {
-//   key: number;
-//   'img-id': number;
-//   src: string;
-//   alt: string;
-// }
-
-// const ProfileImg = styled.img<ProfileImgProps>`
-//   margin-left: -12px;
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   &:nth-child(${(props) => props['img-id']}) {
-//     z-index: ${(props) => props['img-id']};
-//     // left: calc(-100% + ${(props) => props['img-id']} * 10px);
-//   }
-// `;
 
 const RecruitList = (props: { data: RecruitDataProps; setFilterTag: any }) => {
   const {
@@ -258,7 +218,6 @@ const RecruitList = (props: { data: RecruitDataProps; setFilterTag: any }) => {
       sex,
       heartLimit,
       ageGroup,
-      // recruitStatus,
       applies,
       minRequire,
       require,
@@ -369,16 +328,6 @@ const RecruitList = (props: { data: RecruitDataProps; setFilterTag: any }) => {
               <div>인원</div>
               <div>
                 <h4>
-                  {/* <ProfileImgContainer>
-                    {applies.map((el, i) => (
-                      <ProfileImg
-                        key={el.memberId}
-                        img-id={i + 1}
-                        src={`https://picsum.photos/seed/${el.memberId}/20/20.webp`}
-                        alt={`avatar of ${el.nickname}`}
-                      />
-                    ))}
-                  </ProfileImgContainer> */}
                   {`${applies.length} / ${require}명`}
                   <span>{`(최소 ${minRequire}명 이상)`}</span>
                 </h4>

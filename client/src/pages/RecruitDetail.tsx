@@ -204,7 +204,6 @@ const RecruitDetail = () => {
     }
   }, [data]);
 
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));

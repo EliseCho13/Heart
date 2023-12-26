@@ -144,8 +144,6 @@ const Recruits = () => {
     setPage(1);
   };
 
-  // const LOGIN_ID = localStorage.getItem('memberId');
-
   return (
     <MainContainer>
       <div>

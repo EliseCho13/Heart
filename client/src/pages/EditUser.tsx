@@ -4,21 +4,11 @@ import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import Tag from '../components/Tag';
-// import KakaoMap from '../components/KakaoMap';
 import useCurrentLocation from '../utils/useCurrentLocation';
 import NewPassword from '../components/NewPassword';
-// import AutoCompleteForArray from '../components/AutoCompleteForArray';
 import EditAuto from '../components/EditAuto';
-// import KakaoMapAdd from '../components/KakaoMapAdd';
 import AddMap from '../components/AddMap';
 import Loading from './Loading';
-// declare global {
-//   interface Window {
-//     kakao: any;
-//   }
-//   const kakao: any;
-// }
 
 const EditContainer = styled.form`
   background-color: var(--gray);
@@ -267,49 +257,6 @@ const NoLinkButton = styled.button`
   }
 `;
 
-// const InputButton = styled.label`
-//   border: 1px solid white;
-//   border-radius: 10px;
-//   align-items: center;
-//   margin: 3px 0px 15px 20px;
-//   font-size: 14px;
-//   height: 35px;
-//   text-align: center;
-//   display: flex;
-//   color: white;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-//   background-color: var(--gray);
-//   padding: 5px 10px;
-//   cursor: pointer;
-//   > input {
-//     display: none;
-//   }
-//   i {
-//     padding-right: 5px;
-//   }
-//   &:hover {
-//     transition: 0.2s ease-in-out;
-//     text-shadow: white 0 0 5px;
-//     background-color: var(--neon-yellow);
-//     color: black;
-//     border: 1px solid var(--neon-yellow);
-//     cursor: pointer;
-//   }
-// `;
-
-// const TagContainer = styled.div`
-//   fieldset {
-//     display: flex;
-//     flex-direction: row;
-//     width: 25rem;
-//     flex-wrap: wrap;
-//     border: none;
-//     padding-left: 0;
-//     margin-left: 0;
-//   }
-// `;
 const TagList = styled.div`
   width: 18.5rem;
   display: flex;
@@ -317,52 +264,24 @@ const TagList = styled.div`
   margin: 0.5rem;
 `;
 
-// interface PreviewPfp {
-//   src: string;
-// }
-
-// interface Location {
-//   coords: any;
-//   timestamp: any;
-// }
-
-// interface Coordinates {
-//   latitude: number;
-//   longitude: number;
-//   timestamp: number;
-// }
 interface UserFormInput {
   nickname: string;
   curPassword: string;
   newPassword: string;
-  // newPasswordCheck: string;
   phone: string;
   location: string;
   lat: number;
   lon: number;
-  // locations: string[];
-  // memberTags: {
-  //   tagId: number;
-  //   tagName: string;
-  // }[];
   memberTags: {
     tagId: number;
     tagName: string;
     emoji: string;
   }[];
-  // memberTags: string[];
 }
 
-// interface location {
-//   longitude: number;
-//   latitude: number;
-// }
-
 const EditUser = () => {
-  // const { memberId } = useParams();
   const navigate = useNavigate();
   const { location: currentLocation } = useCurrentLocation();
-  // default, changed, done
   const [nickCheck, setNickCheck] = useState('default');
   const [phoneCheck, setPhoneCheck] = useState('default');
   const [passwordMatch, setPasswordMatch] = useState(true);
@@ -481,13 +400,6 @@ const EditUser = () => {
       },
     },
   });
-  // const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   console.log('change', event.target.value);
-  // };
-  // const [location, setLocation] = useState<{
-  //   latitude: number;
-  //   longitude: number;
-  // } | null>(null);
 
   const TAG_DATA = [
     { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
@@ -512,71 +424,6 @@ const EditUser = () => {
     { tagId: 20, tagName: '헬스/크로스핏', emoji: '🏋️' },
     { tagId: 21, tagName: '스케이트/인라인', emoji: '⛸️' },
   ];
-  // useCurrentLocation().then((res) => {
-  //   if (res === undefined) return;
-  //   setLocation(res);
-  // });
-
-  // const imgRef = useRef<any>();
-  // function readImage(input: any) {
-  //   // 인풋 태그에 파일이 있는 경우
-  //   if (input.files && input.files[0]) {
-  //     // FileReader 인스턴스 생성
-  //     const reader = new FileReader();
-
-  //     // 이미지가 로드가 된 경우
-  //     reader.onload = (e: any) => {
-  //       const previewImage = document.getElementById(
-  //         'preview-image',
-  //       ) as PreviewPfp & HTMLImageElement;
-  //       previewImage.src = e.target.result;
-  //     };
-
-  //     // reader가 이미지 읽도록 하기
-  //     reader.readAsDataURL(input.files[0]);
-  //   }
-  // }
-
-  // // input file에 change 이벤트 부여
-  // const saveImgFile = () => {
-  //   const file = (imgRef:any).(current:any).files[0];
-  //   const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onloadend = () => {
-  //         setImg(reader.result);
-  //      };
-  // };
-  // 이미지 추가할 거면 여기 두개
-  // const changeImg = () => {
-  //   const inputImage = document.getElementById(
-  //     'changeFile',
-  //   ) as HTMLInputElement;
-  //   setImg(inputImage.value);
-  //   console.log(img);
-  // };
-  // const deleteImg = () => {
-  //   setImg(
-  //     'https://cdn.discordapp.com/attachments/1030817860047618119/1030866099694211203/BackgroundEraser_20221016_002309876.png',
-  //   );
-  // };
-  // const locationAdd = () => {
-  //   if (locationString === '') {
-  //     alert(
-  //       `위도 : ${currentLocation?.latitude}, 경도 : ${currentLocation?.longitude}`,
-  //     );
-  //   } else {
-  //     alert('위치는 하나만 저장할 수 있습니다');
-  //   }
-  // };
-  // const locationRemove = () => {
-  //   setLocationString('');
-  // };
-  // const locationAdd = () => {
-  //   alert(`위도 : ${location?.latitude}, 경도 : ${location?.longitude}`);
-  // };
-  // inputImage.addEventListener('change', (e) => {
-  //   readImage(e.target);
-  // });
   const changePassword = () => {
     setPasswordChange(!passwordChange);
     doesMatch();
@@ -625,28 +472,6 @@ const EditUser = () => {
         <div>회원정보 수정</div>
         {!isLoading ? (
           <PersonalInfo>
-            {/* <InfoBlock>
-            <label htmlFor="pfp">프로필 사진</label>
-            <div>
-              <Pfp id="preview-image" src={img} />
-            </div>
-            <div>
-              <InputButton htmlFor="changeFile" onClick={changeImg}>
-                <i className="fa-solid fa-arrows-rotate" />
-                변경
-                <input
-                  type="file"
-                  name="changeFile"
-                  id="changeFile"
-                  accept="image/jpeg,image/jpg, image/png, image/svg"
-                />
-              </InputButton>
-              <NoLinkButton onClick={deleteImg}>
-                <i className="fa-solid fa-trash" />
-                삭제
-              </NoLinkButton>
-            </div>
-          </InfoBlock> */}
             <InfoBlock>
               <label htmlFor="nickname">닉네임</label>
               <WarnSet>
@@ -658,7 +483,6 @@ const EditUser = () => {
                   placeholder={oneUser.nickname}
                   autoComplete="off"
                   disabled={nickCheck === 'done'}
-                  // onChange={setNickCheck(false)}
                   {...register('nickname', {
                     onChange: (e) => {
                       if (e.target.value !== oneUser.nickname)
@@ -722,22 +546,7 @@ const EditUser = () => {
             ) : (
               ''
             )}
-            {/* <InfoBlock>
-            <label htmlFor="newPassword">새 비밀번호</label>
-            <input
-              id="newPassword"
-              type="password"
-              {...register('newPassword')}
-            />
-          </InfoBlock>
-          <InfoBlock>
-            <label htmlFor="newPasswordCheck">새 비밀번호 확인</label>
-            <input
-              id="newPasswordCheck"
-              type="password"
-              {...register('newPasswordCheck')}
-            />
-          </InfoBlock> */}
+
             <InfoBlock>
               <label htmlFor="phone">휴대폰 번호</label>
               <WarnSet>
@@ -791,31 +600,7 @@ const EditUser = () => {
                       height={18}
                     />
                   )}
-                  {/* <button type="button" id="locationButton" onClick={locationAdd}>
-                  현재 위치 추가
-                </button> */}
                 </div>
-                {/* <div>
-                {locationString === ''
-                  ? '저장된 위치가 없습니다'
-                  : locationString}
-                <div
-                  role="button"
-                  onClick={locationRemove}
-                  onKeyDown={locationRemove}
-                  tabIndex={0}
-                >
-                  {locationString === '' ? (
-                    ''
-                  ) : (
-                    <i className="fa-solid fa-xmark" />
-                  )}
-                </div>
-              </div> */}
-                {/* <div>
-                수원시
-                <i className="fa-solid fa-xmark" />
-              </div> */}
               </div>
             </InfoBlock>
             <InfoBlock>
@@ -826,7 +611,6 @@ const EditUser = () => {
                     fields={fields}
                     append={append}
                     remove={remove}
-                    // register={register}
                     control={control}
                     data={TAG_DATA}
                     tagLength={3}

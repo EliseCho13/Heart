@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import axios from 'axios';
-// import Tag from '../components/Tag';
 import AutoCompleteForArray from '../components/AutoCompleteForArray';
-// import KakaoMap from '../components/KakaoMap';
-// import KakaoMapAdd from '../components/KakaoMapAdd';
 import AddMap from '../components/AddMap';
 import useCurrentLocation from '../utils/useCurrentLocation';
 import Button from '../components/Button';
@@ -29,7 +26,6 @@ interface IFormInput {
   locations: string;
   lat: number;
   lon: number;
-  // profile: string;
 }
 
 const SignUpContainer = styled.div`
@@ -168,18 +164,6 @@ const SignUp = () => {
         console.log(err);
       });
   };
-
-  // console.log(watch('tags'));
-  // const toggles = watch('tags', []);
-  // const [disabled, setDisabled] = useState(false);
-  // if (toggles.length > 3) {
-  //   alert('최대 3개까지 선택');
-  // }
-  // useEffect(() => {
-  //   if (toggles.length > 2) {
-  //     setDisabled(true);
-  //   }
-  // }, [toggles]);
 
   const TAG_DATA = [
     { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
@@ -419,13 +403,6 @@ const SignUp = () => {
                 <p>지역</p>
               </td>
               <td>
-                {/* <div> */}
-                {/* {currentLocation && (
-                    <KakaoMapAdd
-                      latitude={currentLocation.latitude}
-                      longitude={currentLocation.longitude}
-                    />
-                  )} */}
                 {currentLocation && (
                   <AddMap
                     latitude={currentLocation.latitude}
@@ -438,7 +415,6 @@ const SignUp = () => {
                     height={25}
                   />
                 )}
-                {/* </div> */}
               </td>
             </tr>
             <tr>
@@ -457,14 +433,6 @@ const SignUp = () => {
                 />
               </td>
             </tr>
-            {/* <tr>
-            <td>
-          <label htmlFor="profile">프로필 사진</label>
-          <td>
-          <td>
-          <input id="profile" type="file" {...register('profile')} />
-          </td>
-        </tr> */}
           </tbody>
         </table>
         <Button

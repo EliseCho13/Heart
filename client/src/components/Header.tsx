@@ -82,24 +82,6 @@ const ButtonsContainer = styled.div`
   }
 `;
 
-// const Button = styled(Link)`
-//   text-decoration: none;
-//   background-color: var(--gray);
-//   color: white;
-//   border-radius: 5px;
-//   margin-left: 10px;
-//   padding: 8px 14px;
-//   transition: 0.2s ease-in-out;
-//   font-size: 16px;
-//   white-space: nowrap;
-//   &:hover {
-//     cursor: pointer;
-//     background-color: var(--neon-yellow);
-//     color: black;
-//     transition: 0.2s ease-in-out;
-//   }
-// `;
-
 const Board = styled.nav`
   display: flex;
   align-items: center;
@@ -127,17 +109,9 @@ const BoardLink = styled(Link)<{ path: string; to: string }>`
   }
 `;
 
-// interface HeaderProps {
-//   token: string | null;
-//   setToken: any;
-// }
-
 const Header = () => {
   const dispatch = useDispatch();
-  // { token, setToken }: HeaderProps
   const { pathname: path } = useLocation();
-  // const Authorization = token;
-  // const Refresh = localStorage.getItem('RefreshToken');
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
 
@@ -161,12 +135,6 @@ const Header = () => {
           dispatch(setHeart(res.headers.heart!));
           dispatch(setBirth(res.headers.birth!));
           dispatch(setSex(res.headers.sex!));
-          // localStorage.setItem('AccessToken', res.headers.authorization!);
-          // localStorage.setItem('RefreshToken', res.headers.refresh!);
-          // localStorage.setItem('memberId', res.headers['member-id']!);
-          // localStorage.setItem('birth', res.headers.birth!);
-          // localStorage.setItem('heart', res.headers.heart!);
-          // localStorage.setItem('sex', res.headers.sex!);
         })
         .catch(() => {
           dispatch(deleteAccessToken());
@@ -175,13 +143,6 @@ const Header = () => {
           dispatch(deleteHeart());
           dispatch(deleteBirth());
           dispatch(deleteSex());
-          // localStorage.removeItem('AccessToken');
-          // localStorage.removeItem('RefreshToken');
-          // localStorage.removeItem('memberId');
-          // localStorage.removeItem('birth');
-          // localStorage.removeItem('heart');
-          // localStorage.removeItem('sex');
-          // setToken(null);
         });
     }
   }, []);
@@ -198,22 +159,13 @@ const Header = () => {
           Refresh: refreshToken,
         },
       })
-      .then((res) => {
+      .then(() => {
         dispatch(deleteAccessToken());
         dispatch(deleteRefreshToken());
         dispatch(deleteMemberId());
         dispatch(deleteHeart());
         dispatch(deleteBirth());
         dispatch(deleteSex());
-        // localStorage.removeItem('AccessToken');
-        // localStorage.removeItem('RefreshToken');
-        // localStorage.removeItem('memberId');
-        // localStorage.removeItem('birth');
-        // localStorage.removeItem('heart');
-        // localStorage.removeItem('sex');
-        // setToken(null);
-
-        // window.location.reload();
       });
   };
 
@@ -241,10 +193,6 @@ const Header = () => {
         </Board>
       </div>
       <ButtonsContainer>
-        {/* <form>
-          <i className="fa-solid fa-magnifying-glass" />
-          <input placeholder="Search here..." />
-        </form> */}
         {accessToken ? (
           <>
             <Button value="로그아웃" onClick={logOut} />

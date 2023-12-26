@@ -1,8 +1,6 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-lone-blocks */
-/* eslint-disable operator-linebreak */
+
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -16,7 +14,6 @@ import CommentBox from '../components/CommentBox';
 import CommentSubmitBox from '../components/CommentSubmitBox';
 import Button from '../components/Button';
 import FreeCreatorSelectBox from '../components/FreeCreatorSelectBox';
-// import TagLink from '../components/TagLink';
 
 const FDContainer = styled.main`
   background-color: var(--gray);
@@ -43,16 +40,11 @@ const BoardContainer = styled.div`
   > div:first-child {
     width: 5rem;
     height: 2rem;
-    /* border: 0.05rem solid white; */
     border-radius: 0.3rem;
-    /* background-color: white; */
-    /* color: black; */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 30rem;
-    /* margin-top: 0.5rem;
-    margin-bottom: 0.5rem; */
     i {
       margin-right: 0.3rem;
     }
@@ -68,11 +60,9 @@ const BoardContainer = styled.div`
     justify-content: space-between;
     > div:first-child {
       width: 6rem;
-      /* width: auto; */
       display: flex;
       align-items: center;
       justify-content: center;
-      /* border: 1px solid white; */
       i {
         margin-right: 0.3rem;
       }
@@ -101,15 +91,6 @@ const BoardContainer = styled.div`
     width: 35rem;
     display: flex;
     justify-content: space-between;
-    > div:nth-child(2) {
-      /* width: 10.5rem;
-      display: flex;
-      justify-content: space-between; */
-      /* border: 1px solid white; */
-      /* > button:first-child {
-        margin-right: 0.5rem;
-      } */
-    }
   }
 
   .location {
@@ -119,12 +100,6 @@ const BoardContainer = styled.div`
       margin-right: 0.3rem;
     }
   }
-
-  /* .tag {
-    display: flex;
-    width: 35rem;
-    margin-bottom: 0.2rem;
-  } */
 `;
 
 const ContentContainer = styled.div`
@@ -141,7 +116,6 @@ const ContentContainer = styled.div`
   }
 
   > div {
-    /* border: 0.1rem solid white; */
     width: 35rem;
     height: auto;
     min-height: 3rem;
@@ -153,7 +127,6 @@ const ContentContainer = styled.div`
       align-items: center;
       justify-content: center;
       text-align: center;
-      /* padding: 1rem; */
       margin: 1rem 0;
     }
 
@@ -221,7 +194,6 @@ const FreeDetail = () => {
   const [post, setPost] = useState<FreeDataProps | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [likesMemberId, setLikesMemberId] = useState<number[]>();
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));
@@ -298,23 +270,7 @@ const FreeDetail = () => {
             image={post.filePath}
           />
           <ContentContainer>
-            {/* <div>
-              <img src={preview} alt="preview" />
-            </div> */}
             <div className="body">{post.freeBody}</div>
-            {/* {post?.location === undefined ? (
-              ''
-            ) : (
-              <div>
-                <div className="map">
-                  <KakaoMap
-                    latitude={37.7424074}
-                    longitude={127.042215}
-                    overlayvalue="운동 장소"
-                  />
-                </div>
-              </div>
-            )} */}
           </ContentContainer>
           {post.location ? (
             <div className="location">
@@ -324,16 +280,7 @@ const FreeDetail = () => {
           ) : (
             ''
           )}
-          {/* <div className="tags">
-            {post.freeTags.map((el) => (
-              <TagLink
-                onClick={() => {}}
-                key={el.tagId}
-                value={`${el.tagName}`}
-                to={`/freeboards?type=tag&keyword=${el.tagName}`}
-              />
-            ))}
-          </div> */}
+
           <div>
             {post.freeImages ? (
               post.freeImages.map((el) => (
@@ -383,7 +330,6 @@ const FreeDetail = () => {
             {post.freeComments.length}
             개의 댓글이 있습니다
           </div>
-          {/* <ul> */}
           {post.freeComments.map((el) => (
             <CommentBox
               key={el.freeCommentId}
@@ -396,7 +342,6 @@ const FreeDetail = () => {
               image={el.filePath}
             />
           ))}
-          {/* </ul> */}
           <CommentSubmitBox
             submitComment={`/freeboards/${post.freeId}`}
             setData={setPost}

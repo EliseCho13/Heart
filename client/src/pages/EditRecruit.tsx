@@ -1,11 +1,9 @@
-// import { useState } from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useForm, useWatch } from 'react-hook-form'; // Controller, useFieldArray
+import { useForm, useWatch } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-// import AutoCompleteForArray from '../components/AutoCompleteForArray';
 import useCurrentLocation from '../utils/useCurrentLocation';
 import KakaoMapClick from '../components/KakaoMapClick';
 import Button from '../components/Button';
@@ -148,8 +146,6 @@ const EditRecruit = () => {
   const [recruitData, setRecruitData] = useState<RecruitDataProps | null>();
   const { recruitId } = useParams();
   const navigate = useNavigate();
-  // const token = localStorage.getItem('AccessToken');
-  // const memberId = localStorage.getItem('memberId');
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));
@@ -171,31 +167,7 @@ const EditRecruit = () => {
     getValues,
     setValue,
     formState: { errors },
-  } = useForm<RecruitFormInput>({
-    // defaultValues: {
-    //   recruitTagDtos: recruitData?.recruitTags,
-    //   title: recruitData?.title,
-    //   body: recruitData?.body,
-    //   date: recruitData?.date,
-    //   require: recruitData?.require,
-    //   minRequire: recruitData?.minRequire,
-    //   ages: recruitData?.ageGroup,
-    //   sex: recruitData?.sex,
-    //   heart: recruitData?.heartLimit,
-    //   lat: recruitData?.lat,
-    //   lon: recruitData?.lon,
-    // },
-  });
-  // const { fields, append, remove } = useFieldArray({
-  //   control,
-  //   name: 'recruitTagDtos',
-  //   rules: {
-  //     validate: {
-  //       moreThanOneTag: (values) =>
-  //         values.length > 0 ? true : '태그는 1개 이상 선택해야 합니다',
-  //     },
-  //   },
-  // });
+  } = useForm<RecruitFormInput>({});
 
   const onSubmit = (data: RecruitFormInput) => {
     axios
@@ -217,35 +189,6 @@ const EditRecruit = () => {
 
   const { location } = useCurrentLocation();
 
-  // const TAG_DATA = [
-  //   { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
-  //   { tagId: 2, tagName: '농구', emoji: '🏀' },
-  //   { tagId: 3, tagName: '야구', emoji: '⚾️' },
-  //   { tagId: 4, tagName: '배구', emoji: '🏐' },
-  //   { tagId: 5, tagName: '복싱', emoji: '🥊' },
-  //   { tagId: 6, tagName: '탁구', emoji: '🏓' },
-  //   { tagId: 7, tagName: '배드민턴', emoji: '🏸' },
-  //   { tagId: 8, tagName: '테니스/스쿼시', emoji: '🎾' },
-  //   { tagId: 9, tagName: '태권도/유도', emoji: '🥋' },
-  //   { tagId: 10, tagName: '검도', emoji: '⚔️' },
-  //   { tagId: 11, tagName: '무술/주짓수', emoji: '🥋' },
-  //   { tagId: 12, tagName: '족구', emoji: '⚽️' },
-  //   { tagId: 13, tagName: '러닝', emoji: '🏃' },
-  //   { tagId: 14, tagName: '자전거', emoji: '🚴' },
-  //   { tagId: 15, tagName: '등산', emoji: '🏔️' },
-  //   { tagId: 16, tagName: '클라이밍', emoji: '🧗‍♀️' },
-  //   { tagId: 17, tagName: '수영', emoji: '🏊‍♀️' },
-  //   { tagId: 18, tagName: '골프', emoji: '⛳️' },
-  //   { tagId: 19, tagName: '요가/필라테스', emoji: '🧘' },
-  //   { tagId: 20, tagName: '헬스/크로스핏', emoji: '🏋️' },
-  //   { tagId: 21, tagName: '스케이트/인라인', emoji: '⛸️' },
-  // ];
-
-  // useCurrentLocation().then((res) => {
-  //   if (res === undefined) return;
-  //   setLatLon(res);
-  // });
-
   return (
     <RecruitFormContainer>
       <h1>모집 게시글 수정하기</h1>
@@ -254,23 +197,6 @@ const EditRecruit = () => {
         <RecruitForm onSubmit={handleSubmit(onSubmit)}>
           <table>
             <tbody>
-              {/* <tr>
-                <td>태그</td>
-                <td>
-                  <AutoCompleteForArray
-                    fields={fields}
-                    append={append}
-                    remove={remove}
-                    register={register}
-                    control={control}
-                    data={TAG_DATA}
-                    tagLength={1}
-                  />
-                  <ErrorMessage>
-                    {errors?.recruitTagDtos?.root?.message}
-                  </ErrorMessage>
-                </td>
-              </tr> */}
               <tr>
                 <td>
                   <label htmlFor="title">제목</label>
@@ -369,7 +295,6 @@ const EditRecruit = () => {
                     type="text"
                     defaultValue={recruitData.location}
                     disabled={recruitData.applies.length > 0}
-                    // placeholder="예) 000카페, 00교 다리 위 중간 엘리베이터 앞"
                     {...register('location', {
                       required: '모임 장소는 필수항목입니다',
                     })}
@@ -383,106 +308,17 @@ const EditRecruit = () => {
                     <label htmlFor="latlon">위치 정보</label>
                   </td>
                   <td>
-                    {/* <div className="mapClick">
-                    <KakaoMapClick
-                    latitude={recruitData?.lat}
-                    longitude={recruitData?.lon}
-                    />
-                  </div> */}
                     {location && (
                       <KakaoMapForClick
                         control={control}
                         setValue={setValue}
                         currentLat={location.latitude}
                         currentLon={location.longitude}
-                        // disabled={recruitData.applies.length > 0}
                       />
                     )}
                   </td>
                 </tr>
               )}
-              {/* <tr>
-              <td>성별 조건</td>
-                <td>
-                  {['Both', 'Male', 'Female'].map((item) => (
-                    <label key={item} htmlFor={`field-${item}`}>
-                      <input
-                        defaultValue={recruitData.sex}
-                        {...register('sex', {
-                          required: '성별 조건은 필수항목입니다',
-                        })}
-                        type="radio"
-                        value={item}
-                        id={`field-${item}`}
-                        name="sex"
-                      />
-                      {item === 'Both' ? '성별무관' : ''}
-                      {item === 'Male' ? '남성만' : ''}
-                      {item === 'Female' ? '여성만' : ''}
-                    </label>
-                  ))}
-                  <ErrorMessage>{errors?.sex?.message}</ErrorMessage>
-                </td>
-              </tr>
-              <tr>
-                <td>나이대 조건</td>
-                <td>
-                  {[10, 20, 30, 40, 50, 60, 70].map((el) => (
-                    <label>
-                      <input
-                        defaultValue={recruitData.ageGroup[el]}
-                        key={el}
-                        type="checkbox"
-                        value={el}
-                        {...register('ages', {
-                          required: '나이대 조건은 필수항목입니다',
-                        })}
-                      />
-                      {`${el}대`}
-                    </label>
-                  ))}
-                  <ErrorMessage>{errors?.ages?.message}</ErrorMessage>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="heart">심박수 조건</label>
-                </td>
-                <td>
-                  <Controller
-                    control={control}
-                    name="heart"
-                    // defaultValue={50}
-                    defaultValue={recruitData?.heartLimit}
-                    render={({ field: { value, onChange } }) => (
-                      <>
-                        <input
-                          id="heart"
-                          type="range"
-                          min={0}
-                          max={200}
-                          step={10}
-                          value={value}
-                          {...register('heart', {
-                            required: true,
-                            valueAsNumber: true,
-                          })}
-                          onChange={onChange}
-                        />
-                        <span className="result">현재 심박수 조건 {value}</span>
-                      </>
-                    )}
-                  />
-                </td>
-              </tr> */}
-              {/* <tr>
-                <td>
-                  <label htmlFor="image">이미지</label>
-                </td>
-                <td>
-                  <input id="image" type="file" {...register('image')} />
-                </td>
-              </tr> */}
             </tbody>
           </table>
           <Button

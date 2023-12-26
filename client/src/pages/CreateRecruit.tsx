@@ -1,6 +1,4 @@
-// import { useState } from 'react';
 import { Controller, useFieldArray, useForm, useWatch } from 'react-hook-form';
-// import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -116,7 +114,6 @@ interface RecruitFormInput {
   sex: 'Both' | 'Male' | 'Female';
   ages: number[];
   heartLimit: number;
-  // image: string;
   tagSearch: string;
 }
 
@@ -164,7 +161,6 @@ const CreateRecruit = () => {
   });
 
   const onSubmit = (data: RecruitFormInput) => {
-    // tagSearch는 postBody에서 제외함.
     const { tagSearch, ...postBody } = data;
     axios
       .post(
@@ -180,7 +176,7 @@ const CreateRecruit = () => {
           },
         },
       )
-      .then((res) => {
+      .then(() => {
         navigate(`/recruits`);
       })
       .catch((err) => console.log(err));
@@ -336,12 +332,6 @@ const CreateRecruit = () => {
                 <label htmlFor="latlon">카카오맵</label>
               </td>
               <td>
-                {/* <div className="mapClick">
-                  <KakaoMapClick
-                    latitude={latlon.latitude}
-                    longitude={latlon.longitude}
-                  />
-                </div> */}
                 {location && (
                   <KakaoMapForClick
                     control={control}
@@ -423,20 +413,6 @@ const CreateRecruit = () => {
                 />
               </td>
             </tr>
-            {/* <tr>
-              <td>
-                <label htmlFor="image">이미지</label>
-              </td>
-              <td>
-                <input
-                  id="image"
-                  type="file"
-                  accept="image/jpeg,image/jpg, image/png, image/svg"
-                  multiple
-                  {...register('image')}
-                />
-              </td>
-            </tr> */}
           </tbody>
         </table>
         <Button

@@ -122,7 +122,6 @@ const CommentBox = (props: {
     image,
   } = props;
 
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const storedMemberId = Number(useSelector((state: any) => state.memberId));

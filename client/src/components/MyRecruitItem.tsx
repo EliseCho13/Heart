@@ -76,10 +76,7 @@ const MyRecruitItem = ({ title, quota, dueDate, tags, id }: Item) => (
   <div>
     <ItemContainer to={`/recruit/${id}`}>
       <ItemWrapper>
-        <div>
-          {/* 제목이 엄청 길어지면 어떻게 될까? 한번 테스트해보자 */}
-          {title}
-        </div>
+        <div>{title}</div>
         <div>
           <div>
             <span>{dueDate.slice(0, 10)}</span>
@@ -88,18 +85,10 @@ const MyRecruitItem = ({ title, quota, dueDate, tags, id }: Item) => (
           <div id="tagContainer">
             {tags.map((e) => (
               <MiniTag key={e.tagId} tagName={e.tagName} />
-              // tagName에는 e.tagName을 할당
             ))}
-            {/* <MiniTag key={10} tagName="길어지면" />
-            <MiniTag key={11} tagName="이런식으로" />
-            <MiniTag key={12} tagName="나타나는거지" />
-            <MiniTag key={13} tagName="좀더길어지게" /> */}
           </div>
         </div>
       </ItemWrapper>
-      {/* <div>
-        <i className="fa-solid fa-xmark" />
-      </div> */}
     </ItemContainer>
   </div>
 );

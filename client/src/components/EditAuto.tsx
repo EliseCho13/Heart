@@ -157,7 +157,6 @@ interface AutoCompleteForArrayProps {
   fields: { tagId: number; tagName: string; emoji: string; id: string }[];
   append: any;
   remove: any;
-  // register: any;
   control: any;
   data: { tagId: number; tagName: string; emoji: string }[];
   tagLength: number;
@@ -167,7 +166,6 @@ const EditAuto = ({
   fields,
   append,
   remove,
-  // register,
   control,
   data,
   tagLength,
@@ -188,12 +186,7 @@ const EditAuto = ({
       ))}
     </ul>
     <AutoCompleteBox>
-      <input
-        type="text"
-        defaultValue=""
-        autoComplete="off"
-        // {...register('tagSearch')}
-      />
+      <input type="text" defaultValue="" autoComplete="off" />
       <TagSearchDropBox
         control={control}
         data={data}

@@ -21,7 +21,6 @@ const FreeCreatorSelectBox = () => {
   const navigate = useNavigate();
   const { freeId } = useParams();
 
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const memberId = useSelector((state: any) => state.memberId);
 
   const handleDeleteFree = () => {
@@ -32,10 +31,6 @@ const FreeCreatorSelectBox = () => {
               data: {
                 memberId,
               },
-              // headers: {
-              //   Authorization: `${localStorage.getItem('AccessToken')}`,
-              //   Refresh: `${localStorage.getItem('RefreshToken')}`,
-              // },
             })
             .then(() => navigate(`/freeboards`))
             .catch((err) => console.log(err))
