@@ -169,14 +169,6 @@ const AddMap = ({
     marker.setMap(map);
   }, []);
 
-  // const locationAdd = () => {
-  //   if (locationString === '') {
-  //     alert(`위치: ${locationString}`);
-  //   } else {
-  //     alert('위치는 하나만 저장할 수 있습니다');
-  //   }
-  // };
-
   return (
     <div>
       <span>지도를 눌러 위치를 추가하세요</span>

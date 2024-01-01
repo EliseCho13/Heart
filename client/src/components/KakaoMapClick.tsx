@@ -6,7 +6,6 @@ import markerImg from '../img/placeholder.png';
 const MapContainer = styled.div`
   width: 100%;
   height: 100%;
-  /* display: block; */
 
   .customoverlay {
     span {
@@ -53,7 +52,6 @@ const KakaoMapClick = ({
       imageSize,
       imageOption,
     );
-    // const markerPosition = new kakao.maps.LatLng(latitude, longitude);
 
     const marker = new kakao.maps.Marker({
       position: map.getCenter(),

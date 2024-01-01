@@ -122,7 +122,6 @@ const CommentBox = (props: {
     image,
   } = props;
 
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const storedMemberId = Number(useSelector((state: any) => state.memberId));
@@ -130,7 +129,6 @@ const CommentBox = (props: {
   const [modifying, setModifying] = useState<boolean>(false);
 
   const handleCommentDelete = () => {
-    console.log(`DELETE /${board}/${boardId}/${commentId}`);
     axios
       .delete(
         `${process.env.REACT_APP_API_URL}/${board}/${boardId}/${commentId}`,
@@ -143,12 +141,9 @@ const CommentBox = (props: {
         },
       )
       .then((res) => {
-        console.log(res);
         setData(res.data.data);
       });
   };
-
-  console.log(creatorId, memberId);
 
   return (
     <CommentContainer>

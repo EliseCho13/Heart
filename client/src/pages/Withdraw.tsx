@@ -108,7 +108,6 @@ const Withdraw = () => {
   const refreshToken = useSelector((state: any) => state.refreshToken);
 
   const withdrawal = () => {
-    // 여기에 axios patch 넣어주면 됨.
     axios
       .patch(`${process.env.REACT_APP_API_URL}/members/my-page/withdraw`, {
         headers: {
@@ -116,12 +115,8 @@ const Withdraw = () => {
           Refresh: refreshToken,
         },
       })
-      .then((res: any) => {
-        console.log(res);
-      })
       .catch((err: any) => console.log(err));
     navigate('/');
-    // console.log(memberId, ' withdrew');
   };
   return (
     <WithdrawWrapper>

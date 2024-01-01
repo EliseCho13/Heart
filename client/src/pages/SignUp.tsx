@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import axios from 'axios';
-// import Tag from '../components/Tag';
 import AutoCompleteForArray from '../components/AutoCompleteForArray';
-// import KakaoMap from '../components/KakaoMap';
-// import KakaoMapAdd from '../components/KakaoMapAdd';
 import AddMap from '../components/AddMap';
 import useCurrentLocation from '../utils/useCurrentLocation';
 import Button from '../components/Button';
@@ -29,7 +26,6 @@ interface IFormInput {
   locations: string;
   lat: number;
   lon: number;
-  // profile: string;
 }
 
 const SignUpContainer = styled.div`
@@ -161,34 +157,13 @@ const SignUp = () => {
         lon,
         locations: locationString,
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/login');
       })
       .catch((err) => {
         console.log(err);
-        console.log(
-          JSON.stringify({
-            ...data,
-            lat,
-            lon,
-            locations: locationString,
-          }),
-        );
       });
   };
-
-  // console.log(watch('tags'));
-  // const toggles = watch('tags', []);
-  // const [disabled, setDisabled] = useState(false);
-  // if (toggles.length > 3) {
-  //   alert('최대 3개까지 선택');
-  // }
-  // useEffect(() => {
-  //   if (toggles.length > 2) {
-  //     setDisabled(true);
-  //   }
-  // }, [toggles]);
 
   const TAG_DATA = [
     { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
@@ -213,8 +188,6 @@ const SignUp = () => {
     { tagId: 20, tagName: '헬스/크로스핏', emoji: '🏋️' },
     { tagId: 21, tagName: '스케이트/인라인', emoji: '⛸️' },
   ];
-
-  console.log('render');
 
   return (
     <SignUpContainer>
@@ -256,7 +229,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-nickname/${nickname}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data === true) {
                           alert('사용 불가능한 닉네임입니다.');
                           setCheckedNickname(true);
@@ -320,7 +292,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-email/${email}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data !== true) {
                           alert('사용 가능한 이메일입니다.');
                           setCheckedEmail(false);
@@ -362,7 +333,6 @@ const SignUp = () => {
                         `${process.env.REACT_APP_API_URL}/members/signup/check-phone/${phone}`,
                       )
                       .then((res) => {
-                        console.log(res);
                         if (res.data !== true) {
                           alert('사용 가능한 번호입니다.');
                           setCheckedPhone(true);
@@ -433,13 +403,6 @@ const SignUp = () => {
                 <p>지역</p>
               </td>
               <td>
-                {/* <div> */}
-                {/* {currentLocation && (
-                    <KakaoMapAdd
-                      latitude={currentLocation.latitude}
-                      longitude={currentLocation.longitude}
-                    />
-                  )} */}
                 {currentLocation && (
                   <AddMap
                     latitude={currentLocation.latitude}
@@ -452,7 +415,6 @@ const SignUp = () => {
                     height={25}
                   />
                 )}
-                {/* </div> */}
               </td>
             </tr>
             <tr>
@@ -471,14 +433,6 @@ const SignUp = () => {
                 />
               </td>
             </tr>
-            {/* <tr>
-            <td>
-          <label htmlFor="profile">프로필 사진</label>
-          <td>
-          <td>
-          <input id="profile" type="file" {...register('profile')} />
-          </td>
-        </tr> */}
           </tbody>
         </table>
         <Button

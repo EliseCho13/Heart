@@ -103,7 +103,6 @@ const Recruits = () => {
         )
         .then((res) => {
           setData(res.data.data);
-          console.log(res.data.data);
           setPageCount(res.data.pageInfo.totalPages);
           setLoading(false);
         })
@@ -144,8 +143,6 @@ const Recruits = () => {
     setListNum(e.target.value);
     setPage(1);
   };
-
-  // const LOGIN_ID = localStorage.getItem('memberId');
 
   return (
     <MainContainer>

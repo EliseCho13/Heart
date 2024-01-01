@@ -1,18 +1,15 @@
 import { useFieldArray, useForm } from 'react-hook-form';
-// import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import EditFreeAuto from '../components/EditFreeAuto';
-// import UseAutosizeTextArea from '../components/UseAutosaveTextArea';
 
 interface FormInputFree {
   category: '질문' | '정보' | '나눔' | '운동';
   title: string;
   content: string;
-  // image: string;
   location: string;
   tag: { tagId: number; tagName: string }[];
   memberTags: {
@@ -21,15 +18,6 @@ interface FormInputFree {
     emoji: string;
   }[];
 }
-
-// interface TagForm {
-//   tagId: number;
-//   categoryExercise: boolean;
-//   tagName: string;
-//   // "emoji":
-//   recruitCount: number;
-//   freeCount: number;
-// }
 
 const Background = styled.div`
   background-color: var(--gray);
@@ -83,7 +71,6 @@ const CRForm = styled.form`
   .input,
   textarea,
   select {
-    // margin-bottom: 15px;
     background-color: var(--gray);
     padding: 5px;
     margin-left: 20px;
@@ -225,8 +212,6 @@ const CreateFreeboard = () => {
     formState: { errors },
   } = useForm<FormInputFree>();
   const navigate = useNavigate();
-  // const [warning, setWarning] = useState('');
-  // const [content, setContent] = useState('');
   const [addedTags, setAddedTags] = useState([]);
   useEffect(() => {
     const getOriginalPost = () => {
@@ -234,7 +219,6 @@ const CreateFreeboard = () => {
         .get(`${process.env.REACT_APP_API_URL}/tags/freeboards?page=1&size=100`)
         .then((res: any) => {
           setAddedTags(res.data.data);
-          console.log(addedTags);
         })
         .catch((err: any) => console.log(err));
     };
@@ -246,14 +230,6 @@ const CreateFreeboard = () => {
       tagName,
       emoji,
     }));
-    console.log({
-      freeTitle: data.title,
-      freeBody: data.content,
-      category: data.category,
-      location: data.location,
-      freeTagDtos: sendingTag,
-      memberId: 1,
-    });
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/freeboards`,
@@ -264,12 +240,6 @@ const CreateFreeboard = () => {
           location: data.location,
           freeTagDtos: sendingTag,
           memberId,
-          // 태그와 멤버아이디가 고정되어있음
-          // tagList: tags.reduce((r, e) => {
-          //   r.push({ tagId: e.tagId });
-          //   return r;
-          // }, []),
-          // tag, image 서버에 추가되면 그냥 data로 넣으면 될듯
         },
         {
           headers: {
@@ -278,8 +248,7 @@ const CreateFreeboard = () => {
           },
         },
       )
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/freeboards');
       })
       .catch((err) => {
@@ -288,26 +257,6 @@ const CreateFreeboard = () => {
       });
     return false;
   };
-  // const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  // UseAutosizeTextArea(textAreaRef.current, content);
-
-  // const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //   const val = evt.target?.value;
-  //   if (val.length === 0) {
-  //     setWarning('본문을 입력하세요');
-  //   } else {
-  //     setWarning('');
-  //   }
-  //   setContent(val);
-  // };
-  // const fileNums = (e:any) => {
-  //   if (e.files.length > 2) {
-  //     alert('file up to 2');
-  //   } else {
-  //     alert('alr we cool');
-  //   }
-  // };
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -324,55 +273,6 @@ const CreateFreeboard = () => {
     tagName,
     emoji,
   }));
-  // [
-  //   { tagId: 1, tagName: '축구/풋살', emoji: '⚽️' },
-  //   { tagId: 2, tagName: '농구', emoji: '🏀' },
-  //   { tagId: 3, tagName: '야구', emoji: '⚾️' },
-  //   { tagId: 4, tagName: '배구', emoji: '🏐' },
-  //   { tagId: 5, tagName: '복싱', emoji: '🥊' },
-  //   { tagId: 6, tagName: '탁구', emoji: '🏓' },
-  //   { tagId: 7, tagName: '배드민턴', emoji: '🏸' },
-  //   { tagId: 8, tagName: '테니스/스쿼시', emoji: '🎾' },
-  //   { tagId: 9, tagName: '태권도/유도', emoji: '🥋' },
-  //   { tagId: 10, tagName: '검도', emoji: '⚔️' },
-  //   { tagId: 11, tagName: '무술/주짓수', emoji: '🥋' },
-  //   { tagId: 12, tagName: '족구', emoji: '⚽️' },
-  //   { tagId: 13, tagName: '러닝', emoji: '🏃' },
-  //   { tagId: 14, tagName: '자전거', emoji: '🚴' },
-  //   { tagId: 15, tagName: '등산', emoji: '🏔️' },
-  //   { tagId: 16, tagName: '클라이밍', emoji: '🧗‍♀️' },
-  //   { tagId: 17, tagName: '수영', emoji: '🏊‍♀️' },
-  //   { tagId: 18, tagName: '골프', emoji: '⛳️' },
-  //   { tagId: 19, tagName: '요가/필라테스', emoji: '🧘' },
-  //   { tagId: 20, tagName: '헬스/크로스핏', emoji: '🏋️' },
-  //   { tagId: 21, tagName: '스케이트/인라인', emoji: '⛸️' },
-  // ];
-
-  // const addTag = (e: any) => {
-  //   // e.target.value
-  //   if (e.keyCode === 13) {
-  //     for (let i = 0; i < addedTags.length; i += 1) {
-  //       if (addedTags[i].tagName === e.target.value) {
-  //         // 이미 존재하는 태그일 경우
-  //         console.log('tag exist');
-  //         return false;
-  //       }
-  //     }
-
-  //     axios
-  //       .post(`${process.env.REACT_APP_API_URL}/tags`, {
-  //         tagName: e.target.value,
-  //       })
-  //       .then((res) => {
-  //         // console.log(res);
-  //         alert(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log('key error ', err);
-  //       });
-  //   }
-  //   return false;
-  // };
   return (
     <Background>
       <CRForm onSubmit={handleSubmit(onSubmit)}>
@@ -431,13 +331,10 @@ const CreateFreeboard = () => {
         <div>
           <label htmlFor="tag">태그</label>
           <div className="tagContainer">
-            {/* <input id="tag" name="tag" onKeyUp={addTag} />
-            <span>엔터키로 태그를 입력하세요</span> */}
             <EditFreeAuto
               fields={fields}
               append={append}
               remove={remove}
-              // register={register}
               control={control}
               data={TAG_DATA}
               tagLength={3}
@@ -445,19 +342,6 @@ const CreateFreeboard = () => {
             <span>스페이스바/버튼 선택으로 태그를 입력하세요</span>
           </div>
         </div>
-        {/* <div>
-          <div className="label">이미지</div>
-          <label htmlFor="image" className="imagebutton">
-            + 이미지 파일 추가
-          </label>
-          <input
-            id="image"
-            type="file"
-            accept="image/jpeg,image/jpg, image/png, image/svg"
-            multiple
-            {...register('image')}
-          />
-        </div> */}
         <ButtonContainer>
           <button type="submit">작성하기</button>
           <Link to="/freeboards">

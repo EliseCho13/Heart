@@ -28,7 +28,6 @@ const RecruitCreatorSelectBox = ({
   const navigate = useNavigate();
   const { recruitId } = useParams();
 
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = useSelector((state: any) => state.memberId);

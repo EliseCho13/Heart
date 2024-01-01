@@ -128,7 +128,6 @@ const RecruitReviewModal = ({
   const [filterTag, setFilterTag] = useState<string>('');
   const [star, setStar] = useState<number>(5);
   const reviewBody = useRef('');
-  // const LOGIN_ID = Number(localStorage.getItem('memberId'));
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));
@@ -143,12 +142,6 @@ const RecruitReviewModal = ({
   const handleReviewSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (reviewBody.current.trim()) {
-      console.log(`POST /recruits/${recruitId}/reviews, {
-            "body": ${reviewBody.current},
-            "memberId": ${memberId},
-            "star": ${star},
-            "worstMemberNickname": ${filterTag || ''}
-          }`);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}/recruits/${recruitId}/reviews`,
@@ -166,7 +159,6 @@ const RecruitReviewModal = ({
           },
         )
         .then((res) => {
-          console.log(res.data.data);
           setData(res.data.data);
           setReviewModal(false);
         })

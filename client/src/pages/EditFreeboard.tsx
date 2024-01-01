@@ -11,9 +11,6 @@ interface FormInputFree {
   category: '질문' | '정보' | '나눔' | '운동';
   freeTitle: string;
   freeBody: string;
-  // memberId: number;
-  // image: string;
-  // tag: { tagId: number; tagName: string }[];
 }
 
 const Background = styled.div`
@@ -171,8 +168,6 @@ const EditFreeboard = () => {
     formState: { errors },
   } = useForm<FormInputFree>();
   const navigate = useNavigate();
-  // const [warning, setWarning] = useState('');
-  // const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [posting, setPosting] = useState<FreeDataProps>({
     freeId: 1,
@@ -199,12 +194,7 @@ const EditFreeboard = () => {
   useEffect(() => {
     const getOriginalPost = () => {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/freeboards/${freeId}`, {
-          // headers: {
-          //   Authorization: `${localStorage.getItem('AccessToken')}`,
-          //   Refresh: `${localStorage.getItem('RefreshToken')}`,
-          // },
-        })
+        .get(`${process.env.REACT_APP_API_URL}/freeboards/${freeId}`, {})
         .then((res: any) => {
           setPosting(res.data.data);
           setIsLoading(false);
@@ -215,55 +205,23 @@ const EditFreeboard = () => {
   }, []);
 
   const onSubmit = (data: FormInputFree) => {
-    // data.content = content;
-    console.log('here is ', {
-      ...data,
-      memberId,
-      // freeId: posting.freeId,
-    });
     axios
       .patch(`${process.env.REACT_APP_API_URL}/freeboards/${freeId}`, {
         ...data,
         memberId,
-        // tagList: tags.reduce((r, e) => {
-        //   r.push({ tagId: e.tagId });
-        //   return r;
-        // }, []),
-        // tag, image 서버에 추가되면 그냥 data로 넣으면 될듯
         headers: {
           Authorization: accessToken,
           Refresh: refreshToken,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         navigate('/freeboards');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         navigate('/login');
       });
   };
-  // const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  // UseAutosizeTextArea(textAreaRef.current, content);
-
-  // const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //   const val = evt.target?.value;
-  //   if (val.length === 0) {
-  //     setWarning('본문을 입력하세요');
-  //   } else {
-  //     setWarning('');
-  //   }
-  //   setContent(val);
-  // };
-  // const fileNums = (e:any) => {
-  //   if (e.files.length > 2) {
-  //     alert('file up to 2');
-  //   } else {
-  //     alert('alr we cool');
-  //   }
-  // };
   return (
     <Background>
       {!isLoading ? (

@@ -24,10 +24,8 @@ const loginDb = createAsyncThunk('post/loginDb', async (data: LoginProps) => {
       sex: response.headers.sex,
     };
     setCookie('loginInfo', `${loginInfo}`);
-    console.log(accessToken, refreshToken, loginInfo);
     return response.headers;
   } catch (err) {
-    console.log(err);
     return 'err';
   }
 });

@@ -7,19 +7,16 @@ const TagContainer = styled.span`
   text-align: center;
   border: 1px solid white;
   border-radius: 0.3rem;
-  /* width: 6.55rem; */
   width: 7rem;
   height: 3rem;
   margin: 0.05rem;
   input[type='checkbox'] {
-    /* width: 0.8rem; */
     bottom: 0.5rem;
     margin-top: 0.75rem;
     top: 0.25rem;
     flex: 1;
   }
   label {
-    /* width: 6rem; */
     font-size: 10px;
     height: auto;
     flex: 8;
@@ -35,20 +32,13 @@ interface PropsType {
   emoji: string;
   tagId: number;
   register: any;
-  // disabled: boolean;
   fields: { tagId: number; tagName: string }[];
   append: any;
   remove: any;
   control: any;
 }
 
-const Tag = ({
-  // disabled,
-  register,
-  tagName,
-  emoji,
-  tagId,
-}: PropsType) => {
+const Tag = ({ register, tagName, emoji, tagId }: PropsType) => {
   const inputValue = {
     tagId,
     tagName,
@@ -58,14 +48,9 @@ const Tag = ({
   return (
     <TagContainer>
       <input
-        // disabled={disabled}
         type="checkbox"
-        // id={name}
-        // name="tags"
         name={tagName}
         value={inputValue}
-        // value={tagName}
-        // control={control}
         {...register('tags')}
       />
       <label htmlFor={tagName}>

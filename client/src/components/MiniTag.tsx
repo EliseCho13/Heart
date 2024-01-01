@@ -8,7 +8,6 @@ const MiniTagContainer = styled.div`
 
 interface Tags {
   tagName: string;
-  // 추가?
 }
 
 const MiniTag = ({ tagName }: Tags) => (

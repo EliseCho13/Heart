@@ -1,6 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable @typescript-eslint/indent */
-/* eslint-disable no-confusing-arrow */
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -23,7 +20,6 @@ const FBLContainer = styled.main`
   h1 {
     width: 35rem;
     margin-left: 1rem;
-    /* margin-top: 1rem; */
     padding-top: 1rem;
   }
 
@@ -71,7 +67,6 @@ const FiltContainer = styled.div`
   border-radius: 1rem;
   margin-left: 8rem;
   margin-top: 1rem;
-  /* margin-bottom: 1rem; */
 
   > a {
     text-decoration: none;
@@ -94,7 +89,6 @@ const CategoryLink = styled(Link)<{ color: string; currentcolor: string }>`
     justify-content: center;
     width: 4rem;
     height: 2rem;
-    /* border: 0.05rem solid white; */
     border-radius: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.2rem;
@@ -108,7 +102,6 @@ const FreeBoards = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
   const location = useLocation();
-  console.log(location);
   const searchParams = new URLSearchParams(useLocation().search);
   const [typeState, setTypeState] = useState<string>(
     searchParams.get('type')?.replaceAll('"', '') ?? '',
@@ -124,7 +117,6 @@ const FreeBoards = () => {
   };
 
   useEffect(() => {
-    console.log(typeState, keywordState);
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/freeboards?type=${typeState}&keyword=${keywordState}`,
@@ -139,7 +131,6 @@ const FreeBoards = () => {
         setData(res.data.data);
         setPageCount(res.data.pageInfo.totalPages);
         setLoading(false);
-        console.log(data);
       })
       .catch((err) => console.log(err));
 

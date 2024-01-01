@@ -238,7 +238,6 @@ const RecruitApplyAfterMeeting = ({
 }: ReviewConditionProps) => {
   const { recruitId } = useParams();
   const [reviewModal, setReviewModal] = useState<boolean>(false);
-  // const LOGIN_ID = Number(localStorage.getItem('memberId')) || -1;
   const accessToken = useSelector((state: any) => state.accessToken);
   const refreshToken = useSelector((state: any) => state.refreshToken);
   const memberId = Number(useSelector((state: any) => state.memberId));
